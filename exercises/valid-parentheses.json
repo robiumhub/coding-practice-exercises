@@ -1,0 +1,31 @@
+{
+  "slug": "valid-parentheses",
+  "title": "Valid Parentheses",
+  "description": "## Valid Parentheses\n\nGiven a string `s` containing just the characters `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`, determine if the input string is valid.\n\nAn input string is valid if:\n1. Open brackets must be closed by the same type of brackets.\n2. Open brackets must be closed in the correct order.\n3. Every close bracket has a corresponding open bracket of the same type.\n\n### Example 1:\n```\nInput: s = \"()\"\nOutput: true\n```\n\n### Example 2:\n```\nInput: s = \"()[]{}\"\nOutput: true\n```\n\n### Example 3:\n```\nInput: s = \"(]\"\nOutput: false\n```\n",
+  "starterCode": "function solution(s) {\n  // Return true if valid, false otherwise\n  \n}",
+  "solutionCode": "function solution(s) {\n  const stack = [];\n  const map = { ')': '(', '}': '{', ']': '[' };\n  for (const char of s) {\n    if (char in map) {\n      if (stack.pop() !== map[char]) return false;\n    } else {\n      stack.push(char);\n    }\n  }\n  return stack.length === 0;\n}",
+  "testCases": [
+    {
+      "input": "()",
+      "expected": true
+    },
+    {
+      "input": "()[]{}",
+      "expected": true
+    },
+    {
+      "input": "(]",
+      "expected": false
+    },
+    {
+      "input": "([)]",
+      "expected": false
+    },
+    {
+      "input": "{[]}",
+      "expected": true
+    }
+  ],
+  "difficulty": "easy",
+  "category": "stacks"
+}
